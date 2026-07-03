@@ -6,7 +6,7 @@ pipeline {
     ECR_PREFIX = 'streamingapp'
     RELEASE_NAME = 'streamingapp'
     K8S_NAMESPACE = 'streamingapp'
-    AWS_CREDENTIALS_ID = 'avinashsain'
+    AWS_CREDENTIALS_ID = 'aws-jenkins'
     // Set after Part 7: SNS_TOPIC_ARN = 'arn:aws:sns:us-east-1:<ACCOUNT_ID>:streamingapp-alerts'
     // Set after Part 5 (backend ELB DNS names):
     FE_AUTH   = 'http://<auth-elb>.us-east-1.elb.amazonaws.com:3001/api'

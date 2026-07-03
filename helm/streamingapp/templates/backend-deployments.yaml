@@ -26,6 +26,8 @@ spec:
               value: {{ $.Values.env.awsRegion | quote }}
             - name: AWS_S3_BUCKET
               value: {{ $.Values.env.s3Bucket | quote }}
+            - name: STREAMING_PUBLIC_URL
+              value: {{ $.Values.env.streamingPublicUrl | quote }}
             - name: JWT_SECRET
               valueFrom:
                 secretKeyRef: { name: streamingapp-secrets, key: JWT_SECRET }

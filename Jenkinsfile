@@ -96,10 +96,18 @@ pipeline {
 
   post {
     success {
-      sh 'if [ -n "${SNS_TOPIC_ARN:-}" ]; then aws sns publish --region "$AWS_REGION" --topic-arn "$SNS_TOPIC_ARN" --subject "Deploy SUCCESS" --message "StreamingApp build $IMAGE_TAG deployed ($JOB_NAME #$BUILD_NUMBER)"; fi'
+      script {
+        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: env.AWS_CREDENTIALS_ID]]) {
+          sh 'if [ -n "${SNS_TOPIC_ARN:-}" ]; then aws sns publish --region "$AWS_REGION" --topic-arn "$SNS_TOPIC_ARN" --subject "Deploy SUCCESS" --message "StreamingApp build $IMAGE_TAG deployed ($JOB_NAME #$BUILD_NUMBER)"; fi'
+        }
+      }
     }
     failure {
-      sh 'if [ -n "${SNS_TOPIC_ARN:-}" ]; then aws sns publish --region "$AWS_REGION" --topic-arn "$SNS_TOPIC_ARN" --subject "Deploy FAILED" --message "StreamingApp build FAILED ($JOB_NAME #$BUILD_NUMBER): $BUILD_URL"; fi'
+      script {
+        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: env.AWS_CREDENTIALS_ID]]) {
+          sh 'if [ -n "${SNS_TOPIC_ARN:-}" ]; then aws sns publish --region "$AWS_REGION" --topic-arn "$SNS_TOPIC_ARN" --subject "Deploy FAILED" --message "StreamingApp build FAILED ($JOB_NAME #$BUILD_NUMBER): $BUILD_URL"; fi'
+        }
+      }
     }
   }
 }

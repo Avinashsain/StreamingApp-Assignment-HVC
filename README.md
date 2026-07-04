@@ -355,7 +355,8 @@ Documenting these was half the learning. Every issue below actually occurred dur
 
 ## Cost Management & Teardown
 
-Total project cost ≈ **$2–4** by design: Jenkins local ($0), cluster created and destroyed same-day, screenshots taken before teardown.
+Total project cost ≈ **$1–2** by design: Jenkins local ($0), cluster created and destroyed same-day, screenshots taken before teardown.
+![Cost Management](./screenshots/cost/Screenshot-1.png)
 
 ```bash
 ./scripts/cleanup.sh

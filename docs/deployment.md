@@ -55,6 +55,7 @@ Pipeline job: *Pipeline script from SCM* → this repo → `Jenkinsfile`, trigge
 
 Pipeline stages: **Checkout** (sets IMAGE_TAG = 12-char git SHA) → **AWS Login** (ECR docker login) → **Build Backend Images** (loop over 4 services with correct contexts, `--platform linux/amd64`) → **Build Frontend Image** (production ELB URLs as build args) → **Deploy to EKS** (helm upgrade with S3 keys injected via `--set`) → **post**: SNS success/failure notification (wrapped in `withCredentials`).
 
+![Jenkins pipeline AWS Credentials*](../screenshots/cost/Screenshot-2.png)
 ![Jenkins pipeline stage view — all green](../screenshots/jenkins-pipeline-stage-view/jenkins-1.png)
 ![Jenkins build history](../screenshots/jenkins-pipeline-stage-view/jenkins-2.png)
 ![Jenkins console output — successful deploy](../screenshots/jenkins-pipeline-stage-view/jenkins-3.png)

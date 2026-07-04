@@ -215,6 +215,7 @@ ngrok http 8080 --domain=<static-domain>.ngrok-free.dev
 5. **Deploy to EKS** — `helm upgrade --install`, S3 keys injected via `--set` from credentials
 6. **post** — SNS publish on success/failure (wrapped in `withCredentials`)
 
+![Jenkins pipeline AWS Credentials*](./screenshots/cost/Screenshot-2.png)
 ![Jenkins pipeline stage view — all green](./screenshots/jenkins-pipeline-stage-view/jenkins-1.png)
 ![Jenkins build history](./screenshots/jenkins-pipeline-stage-view/jenkins-2.png)
 ![Jenkins console output — successful deploy](./screenshots/jenkins-pipeline-stage-view/jenkins-3.png)
